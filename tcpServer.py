@@ -12,6 +12,7 @@ while True:
     sentence = connectionSocket.recv(1024).decode() # receives data and decodes it
     
     capitalizedSentence = sentence.upper()              # capitalizes data
+    print(f"Data received: {sentence} -> Data returning: {capitalizedSentence}")
     connectionSocket.send(capitalizedSentence.encode()) # encodes and sends back
     
     connectionSocket.close()        # closes socket

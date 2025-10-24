@@ -10,4 +10,5 @@ while True:
     message, clientAddress = serverSocket.recvfrom(2048)    # receives data
     modifiedMessage = message.decode().upper()              # decodes and capitalizes data
     
+    print(f"Data received: {message} -> Data returning: {modifiedMessage}")
     serverSocket.sendto(modifiedMessage.encode(), clientAddress)    # encodes and sends back
