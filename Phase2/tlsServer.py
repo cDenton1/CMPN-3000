@@ -19,6 +19,9 @@ def main():             # main function, makes future modularity easier
 
         try:
             sentence = tlsConnection.recv(1024).decode()                            # receives data, max 1024 bytes, and decodes it
+            if not sentence:                                                        # close if received empty data
+                print("Empty message received, closing connection")
+                return
 
             capSentence = sentence.upper()                                          # capitalizes data
             print(f"Data recieved: {sentence} -> Data returning: {capSentence}")

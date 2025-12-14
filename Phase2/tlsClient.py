@@ -18,6 +18,13 @@ def main():                 # main function, makes future modularity easier
         tlsSocket.connect((serverName, serverPort))             # connects to server
         
         sentence = input("Input lowercase sentence: ")          # stores user input
+        if not sentence:                                        # prevent empty input
+            print("Error: input cannot be empty")
+            return
+        if len(sentence) > 1024:                                # prevent oversized payload
+            print("Error: input too long")
+            return
+
         tlsSocket.send(sentence.encode())                       # encodes and sends data
 
         modifiedSentence = tlsSocket.recv(1024).decode()        # receives data, max 1024 bytes, and decodes it
